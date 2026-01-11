@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dành tặng em bé N.Quỳnh</title>
+    <style>
+        :root {
+            --primary: #ff4757; 
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* --- LINK HÌNH CỦA BẠN Ở ĐÂY --- */
+            background-image: url('https://lh3.googleusercontent.com/d/1lA7tEPfHucA53KA9WI2dkFL1ZSijjQ84'); 
+            
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden; 
+        }
+
+        /* Lớp phủ đen mờ để chữ dễ đọc hơn */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Giảm độ tối đi một chút để hình nền sáng hơn khi nhìn qua kính */
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            /* --- PHẦN QUAN TRỌNG ĐÃ SỬA --- */
+            /* Giảm độ trong suốt xuống 0.4 để nhìn xuyên thấu hơn */
+            background: rgba(255, 255, 255, 0.4); 
+            /* Tăng độ blur lên để kính mờ ảo hơn */
+            backdrop-filter: blur(15px); 
+            /* Thêm viền trắng mỏng để tạo cảm giác tấm kính */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Giảm bóng một chút */
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        /* Input và Select cũng cần trong suốt một chút cho đồng bộ */
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(255, 221, 225, 0.6); /* Viền nhạt hơn */
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+            /* Nền input trong suốt */
+            background: rgba(255, 255, 255, 0.6); 
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(255, 71, 87, 0.2);
+            background: rgba(255, 255, 255, 0.9); /* Khi gõ thì rõ hơn chút */
+        }
+
+        button {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #result-area {
+            margin-top: 2rem;
+            min-height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            word-wrap: break-word;
+        }
+        
+        .note {
+            font-size: 0.8rem;
+            color: #d63031;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* --- CSS HIỆU ỨNG TRÁI TIM RƠI --- */
+        .heart {
+            position: fixed;
+            top: -50px;
+            color: #ff4757;
+            z-index: 1;
+            animation: fall linear forwards;
+            opacity: 0;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0.9; 
+            }
+            100% { 
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Chào mừng em bé N.Quỳnh ✨</h1>
+
+    <div class="control-group">
+        <label>Em bé của anh Trình đang phân vân chuyện gì?</label>
+        <select id="mode">
+            <option value="food">Hôm nay ăn gì với anh Trình?</option>
+            <option value="drink">Hôm nay uống gì với anh Trình?</option>
+            <option value="place">Hôm nay đi đâu với anh Trình?</option>
+        </select>
+    </div>
+
+    <div class="control-group">
+        <label>Nguyện vọng 1 (Nếu có):</label>
+        <input type="text" id="wish" placeholder="Ví dụ: Trà sữa chôm chôm">
+        <p class="note">*Nếu điền ô này, anh Trình chắc chắn sẽ chiều ý em bé.</p>
+    </div>
+
+    <button onclick="spin()">CHỐT ĐƠN!</button>
+
+    <div id="result-area">
+        <div id="result">Kết quả hiện ở đây</div>
+    </div>
+</div>
+
+<script>
+    // --- DỮ LIỆU ---
+    const data = {
+        food: [
+            "Phở", "Bún bò Huế", "Cơm tấm", "Bún đậu mắm tôm", "Mì cay", 
+            "Lẩu thái", "Lẩu", "Pizza", "Gà rán", "Sushi",  
+            "Bánh tráng trộn", "Xiên bẩn", "Ốc"
+        ],
+        drink: [
+            "Trà sữa", "Cà phê", "Trà"
+        ],
+        place: [
+            "Kalita", "Đi dạo công viên", "Đi xem phim", "Đi nhà sách"
+        ]
+    };
+
+    // --- LOGIC QUAY SỐ ---
+    let isSpinning = false;
+    function spin() {
+        if (isSpinning) return;
+        
+        const mode = document.getElementById('mode').value;
+        const wish = document.getElementById('wish').value.trim();
+        const resultDiv = document.getElementById('result');
+        const list = data[mode];
+
+        if (wish !== "") {
+            resultDiv.innerText = "✨ " + wish + " ✨";
+            resultDiv.style.color = "#ff4757";
+            return;
+        }
+
+        isSpinning = true;
+        resultDiv.style.color = "#333";
+        let count = 0;
+        let maxCount = 20;
+        let speed = 50;
+
+        const interval = setInterval(() => {
+            const randomIndex = Math.floor(Math.random() * list.length);
+            resultDiv.innerText = list[randomIndex];
+            
+            count++;
+            if (count >= maxCount) {
+                clearInterval(interval);
+                isSpinning = false;
+                const finalIndex = Math.floor(Math.random() * list.length);
+                resultDiv.innerText = "🎉 " + list[finalIndex] + " 🎉";
+                resultDiv.style.color = "#2ed573";
+            }
+        }, speed);
+    }
+
+    // --- LOGIC MƯA TRÁI TIM ---
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        
+        const icons = ['❤️', '💖', '💕', '🌹'];
+        heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 25 + 10 + 'px';
+        heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+        
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 200);
+
+</script>
+
+</body>
+</html>

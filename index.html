@@ -13,130 +13,57 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* --- LINK HÌNH CỦA BẠN Ở ĐÂY --- */
             background-image: url('https://lh3.googleusercontent.com/d/1lA7tEPfHucA53KA9WI2dkFL1ZSijjQ84'); 
-            
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            overflow: hidden; 
+            background-size: cover; background-position: center;
+            background-repeat: no-repeat; background-attachment: fixed;
+            height: 100vh; display: flex; justify-content: center;
+            align-items: center; margin: 0; overflow: hidden; 
         }
 
-        /* Lớp phủ đen mờ để chữ dễ đọc hơn */
         body::before {
-            content: '';
-            position: absolute;
+            content: ''; position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Giảm độ tối đi một chút để hình nền sáng hơn khi nhìn qua kính */
-            background: rgba(0, 0, 0, 0.2); 
-            z-index: 0;
+            background: rgba(0, 0, 0, 0.2); z-index: 0;
         }
 
         .container {
-            position: relative;
-            z-index: 10;
-            /* --- PHẦN QUAN TRỌNG ĐÃ SỬA --- */
-            /* Giảm độ trong suốt xuống 0.4 để nhìn xuyên thấu hơn */
+            position: relative; z-index: 10;
             background: rgba(255, 255, 255, 0.4); 
-            /* Tăng độ blur lên để kính mờ ảo hơn */
-            backdrop-filter: blur(15px); 
-            /* Thêm viền trắng mỏng để tạo cảm giác tấm kính */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Giảm bóng một chút */
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
+            backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            width: 90%; max-width: 400px; text-align: center;
         }
 
-        h1 {
-            color: #ff6b6b;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
+        h1 { color: #ff6b6b; margin-bottom: 1.5rem; font-size: 1.5rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .control-group { margin-bottom: 1.5rem; text-align: left; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: bold; font-size: 0.9rem; color: #444; }
 
-        .control-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: #444;
-        }
-
-        /* Input và Select cũng cần trong suốt một chút cho đồng bộ */
         select, input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid rgba(255, 221, 225, 0.6); /* Viền nhạt hơn */
-            border-radius: 10px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            outline: none;
-            transition: 0.3s;
-            /* Nền input trong suốt */
-            background: rgba(255, 255, 255, 0.6); 
+            width: 100%; padding: 10px; border: 2px solid rgba(255, 221, 225, 0.6);
+            border-radius: 10px; font-size: 1rem; box-sizing: border-box; outline: none;
+            transition: 0.3s; background: rgba(255, 255, 255, 0.6); 
         }
-
-        select:focus, input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 8px rgba(255, 71, 87, 0.2);
-            background: rgba(255, 255, 255, 0.9); /* Khi gõ thì rõ hơn chút */
-        }
+        select:focus, input:focus { border-color: var(--primary); background: rgba(255, 255, 255, 0.9); }
 
         button {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+            background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none;
+            padding: 15px 30px; font-size: 1.2rem; border-radius: 50px; cursor: pointer; width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+        }
+        button:active { transform: scale(0.95); }
+
+        .btn-game {
+            background: linear-gradient(to right, #00b894, #00cec9); margin-top: 15px;
+            font-size: 1rem; padding: 10px 20px; box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
         }
 
-        button:active {
-            transform: scale(0.95);
-        }
+        #result-area { margin-top: 2rem; min-height: 60px; display: flex; justify-content: center; align-items: center; }
+        #result { font-size: 1.5rem; font-weight: bold; color: #333; word-wrap: break-word; }
+        .note { font-size: 0.8rem; color: #d63031; margin-top: 10px; font-weight: bold; }
 
-        #result-area {
-            margin-top: 2rem;
-            min-height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #result {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-            word-wrap: break-word;
-        }
-        
-        .note {
-            font-size: 0.8rem;
-            color: #d63031;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        /* --- CSS HIỆU ỨNG TRÁI TIM RƠI --- */
+        /* ========================================= */
+        /* --- CSS MƯA TRÁI TIM ĐÃ ĐƯỢC THÊM LẠI --- */
+        /* ========================================= */
         .heart {
             position: fixed;
             top: -50px;
@@ -158,13 +85,65 @@
                 opacity: 0; 
             }
         }
+
+        /* --- GAME PIKACHU --- */
+        #game-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 100; backdrop-filter: blur(10px);
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+        .game-header { color: white; margin-bottom: 10px; text-align: center; width: 95%; max-width: 400px; }
+        #level-title { margin: 0 0 5px 0; font-size: 1.8rem; color: #ffeaa7; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .game-header p { margin: 5px 0; font-size: 0.9rem; opacity: 0.9; }
+        
+        /* THANH THỜI GIAN */
+        .timer-container {
+            width: 100%; height: 15px; background: rgba(255,255,255,0.2);
+            border-radius: 10px; margin-top: 10px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        #timer-fill {
+            height: 100%; width: 100%; background: #00e676;
+            transition: width 1s linear, background-color 0.5s;
+        }
+
+        .game-wrapper {
+            position: relative; padding: 8px; background: rgba(255,255,255,0.95);
+            border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 98vw; /* Tránh tràn viền trên mobile */
+        }
+
+        .game-board {
+            display: grid; gap: 2px; background: transparent; justify-content: center;
+        }
+
+        .cell {
+            width: 35px; height: 35px; /* Size chuẩn cho mobile */
+            background: #ffcccc; border: 1px solid #ff9999; border-radius: 8px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 20px; cursor: pointer; transition: 0.2s; user-select: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .cell.boundary { visibility: hidden; }
+        .cell.empty { background: transparent; border-color: transparent; box-shadow: none; cursor: default; }
+        .cell.selected { background: #ffeaa7; border: 2px solid #fdcb6e; transform: scale(1.1); box-shadow: 0 0 10px #fdcb6e; z-index: 5;}
+
+        #lineCanvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 10; }
+        .btn-close { margin-top: 20px; background: #ff4757; color: #fff; border: none; width: auto; padding: 10px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;}
+
+        /* Thông báo nhỏ khi đảo bài */
+        #toast {
+            position: fixed; bottom: 80px; background: rgba(0,0,0,0.8); color: white;
+            padding: 10px 20px; border-radius: 20px; font-weight: bold;
+            opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 200;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>✨ Chào mừng em bé N.Quỳnh ✨</h1>
-
     <div class="control-group">
         <label>Em bé của anh Trình đang phân vân chuyện gì?</label>
         <select id="mode">
@@ -173,94 +152,366 @@
             <option value="place">Hôm nay đi đâu với anh Trình?</option>
         </select>
     </div>
-
     <div class="control-group">
         <label>Nguyện vọng 1 (Nếu có):</label>
         <input type="text" id="wish" placeholder="Ví dụ: Trà sữa chôm chôm">
         <p class="note">*Nếu điền ô này, anh Trình chắc chắn sẽ chiều ý em bé.</p>
     </div>
-
     <button onclick="spin()">CHỐT ĐƠN!</button>
-
-    <div id="result-area">
-        <div id="result">Kết quả hiện ở đây</div>
-    </div>
+    <button class="btn-game" onclick="openGame()">⚡ Chơi Game Pikachu</button>
+    <div id="result-area"><div id="result">Kết quả hiện ở đây</div></div>
 </div>
 
+<div id="game-modal">
+    <div class="game-header">
+        <h2 id="level-title">Vòng 1</h2>
+        <p>Tìm cặp giống nhau. Nối đúng được <b>+2s</b> nhé!</p>
+        <div class="timer-container"><div id="timer-fill"></div></div>
+    </div>
+    <div class="game-wrapper">
+        <canvas id="lineCanvas"></canvas>
+        <div class="game-board" id="game-board"></div>
+    </div>
+    <button class="btn-close" onclick="closeGame()">Đóng Game</button>
+</div>
+
+<div id="toast">✨ Hết đường! Đang đảo bài... ✨</div>
+
 <script>
-    // --- DỮ LIỆU ---
+    // --- LOGIC VÒNG QUAY MENU ---
     const data = {
-        food: [
-            "Phở", "Bún bò", "Cơm tấm", "Bún đậu mắm tôm", "Mì cay", 
-            "Lẩu", "Pizza", "Gà rán", "Bánh mì xíu mại", "Bánh mì nướng bơ",  
-            "Bánh tráng trộn", "Xiên bẩn", "Ốc", "Gà rán", "Bò kho" 
-        ],
-        drink: [
-            "Trà sữa", "Cà phê", "Trà"
-        ],
-        place: [
-            "Kalita", "Đi dạo công viên", "Đi xem phim", "Đi nhà sách"
-        ]
+        food: ["Phở", "Bún bò Huế", "Cơm tấm", "Bún đậu mắm tôm", "Mì cay", "Lẩu thái", "Lẩu", "Pizza", "Gà rán", "Sushi", "Bánh tráng trộn", "Xiên bẩn", "Ốc"],
+        drink: ["Trà sữa", "Cà phê", "Trà"], place: ["Kalita", "Đi dạo công viên", "Đi xem phim", "Đi nhà sách"]
     };
 
-    // --- LOGIC QUAY SỐ ---
     let isSpinning = false;
     function spin() {
         if (isSpinning) return;
-        
-        const mode = document.getElementById('mode').value;
-        const wish = document.getElementById('wish').value.trim();
         const resultDiv = document.getElementById('result');
-        const list = data[mode];
-
-        if (wish !== "") {
-            resultDiv.innerText = "✨ " + wish + " ✨";
-            resultDiv.style.color = "#ff4757";
-            return;
-        }
-
-        isSpinning = true;
-        resultDiv.style.color = "#333";
-        let count = 0;
-        let maxCount = 20;
-        let speed = 50;
-
+        const wish = document.getElementById('wish').value.trim();
+        if (wish !== "") { resultDiv.innerText = "✨ " + wish + " ✨"; resultDiv.style.color = "#ff4757"; return; }
+        
+        isSpinning = true; resultDiv.style.color = "#333";
+        let list = data[document.getElementById('mode').value];
+        let count = 0, speed = 50;
         const interval = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * list.length);
-            resultDiv.innerText = list[randomIndex];
-            
-            count++;
-            if (count >= maxCount) {
-                clearInterval(interval);
-                isSpinning = false;
-                const finalIndex = Math.floor(Math.random() * list.length);
-                resultDiv.innerText = "🎉 " + list[finalIndex] + " 🎉";
+            resultDiv.innerText = list[Math.floor(Math.random() * list.length)];
+            if (++count >= 20) {
+                clearInterval(interval); isSpinning = false;
+                resultDiv.innerText = "🎉 " + list[Math.floor(Math.random() * list.length)] + " 🎉";
                 resultDiv.style.color = "#2ed573";
             }
         }, speed);
     }
 
-    // --- LOGIC MƯA TRÁI TIM ---
+    // --- MƯA TRÁI TIM ---
     function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        
+        const heart = document.createElement('div'); heart.classList.add('heart');
         const icons = ['❤️', '💖', '💕', '🌹'];
         heart.innerText = icons[Math.floor(Math.random() * icons.length)];
         heart.style.left = Math.random() * 100 + 'vw';
         heart.style.fontSize = Math.random() * 25 + 10 + 'px';
         heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-        
         document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 6000);
+        setTimeout(() => heart.remove(), 6000);
     }
-
     setInterval(createHeart, 200);
 
-</script>
 
+    // ==========================================
+    // LOGIC GAME PIKACHU (VÔ HẠN + TÍNH GIỜ)
+    // ==========================================
+    
+    let currentLevelIndex = 0;
+    let ROWS = 0, COLS = 0;
+    let board = [], domBoard = [];
+    let selected = null;
+    let pairsLeft = 0;
+
+    // Biến thời gian
+    let timerInterval = null;
+    let totalTime = 60;
+    let timeLeft = 60;
+
+    const icons = ['🐶','🐱','🐰','🐻','🐼','🦊','🐸','🐷','🐧','🐥','🦉','🦄','🐝','🐞','🦋','🐢','🦖','🦕'];
+
+    function openGame() {
+        document.getElementById('game-modal').style.display = 'flex';
+        currentLevelIndex = 0;
+        startLevel();
+    }
+
+    function closeGame() {
+        document.getElementById('game-modal').style.display = 'none';
+        if(timerInterval) clearInterval(timerInterval);
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.innerText = msg;
+        toast.style.opacity = '1';
+        setTimeout(() => toast.style.opacity = '0', 2000);
+    }
+
+    // TÍNH TOÁN ĐỘ KHÓ VÀ BẮT ĐẦU VÒNG MỚI
+    function startLevel() {
+        // Tự động tăng kích thước bàn cờ
+        if (currentLevelIndex === 0) { ROWS = 4; COLS = 4; totalTime = 40; } // Vòng 1: Dễ
+        else if (currentLevelIndex === 1) { ROWS = 6; COLS = 4; totalTime = 60; }
+        else if (currentLevelIndex === 2) { ROWS = 6; COLS = 6; totalTime = 80; }
+        else if (currentLevelIndex === 3) { ROWS = 8; COLS = 6; totalTime = 100; }
+        else {
+            // Từ vòng 5 trở đi: Kích thước kịch trần (10x6), nhưng thời gian bị bóp nghẹt dần!
+            ROWS = 10; COLS = 6; 
+            totalTime = Math.max(30, 100 - (currentLevelIndex - 3) * 5); // Tối thiểu 30 giây
+        }
+
+        pairsLeft = (ROWS * COLS) / 2;
+        
+        document.getElementById('level-title').innerText = `Vòng ${currentLevelIndex + 1}`;
+        const gameBoard = document.getElementById('game-board');
+        
+        // Setup Grid CSS động (Cộng 2 cho vòng viền ngoài)
+        gameBoard.style.gridTemplateColumns = `repeat(${COLS + 2}, 1fr)`;
+        gameBoard.innerHTML = '';
+        selected = null;
+        board = []; domBoard = [];
+
+        // Trộn icon
+        let deck = [];
+        for (let i = 0; i < pairsLeft; i++) deck.push(icons[i % icons.length], icons[i % icons.length]);
+        deck.sort(() => Math.random() - 0.5);
+
+        // Render bảng
+        for (let r = 0; r <= ROWS + 1; r++) {
+            board[r] = []; domBoard[r] = [];
+            for (let c = 0; c <= COLS + 1; c++) {
+                const isBoundary = (r === 0 || r === ROWS + 1 || c === 0 || c === COLS + 1);
+                let cell = document.createElement('div');
+                cell.classList.add('cell');
+                
+                if (isBoundary) {
+                    board[r][c] = 0; cell.classList.add('boundary');
+                } else {
+                    let icon = deck.pop();
+                    board[r][c] = icon; cell.innerText = icon;
+                }
+
+                cell.dataset.r = r; cell.dataset.c = c;
+                cell.onclick = () => handleCellClick(r, c);
+                domBoard[r][c] = cell; gameBoard.appendChild(cell);
+            }
+        }
+
+        ensurePlayable();
+
+        // KHỞI ĐỘNG ĐỒNG HỒ
+        timeLeft = totalTime;
+        if(timerInterval) clearInterval(timerInterval);
+        updateTimerDisplay();
+        
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("⏳ Hết giờ mất tiêu rồi! Chơi lại từ Vòng 1 nha nha nha!");
+                closeGame();
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        let fill = document.getElementById('timer-fill');
+        let pct = (timeLeft / totalTime) * 100;
+        if (pct > 100) pct = 100; // Tránh thanh trào ra ngoài nếu cộng quá nhiều
+        
+        fill.style.width = pct + '%';
+        
+        // Đổi màu theo thời gian
+        if (pct > 50) fill.style.background = '#00e676'; // Xanh an toàn
+        else if (pct > 25) fill.style.background = '#ffea00'; // Vàng cảnh báo
+        else fill.style.background = '#ff1744'; // Đỏ nguy hiểm
+    }
+
+    function handleCellClick(r, c) {
+        if (board[r][c] === 0) return; 
+
+        if (selected && selected.r === r && selected.c === c) {
+            domBoard[r][c].classList.remove('selected'); selected = null; return;
+        }
+
+        if (!selected) {
+            selected = {r, c}; domBoard[r][c].classList.add('selected'); return;
+        }
+
+        let r1 = selected.r, c1 = selected.c, r2 = r, c2 = c;
+
+        if (board[r1][c1] !== board[r2][c2]) {
+            domBoard[r1][c1].classList.remove('selected');
+            selected = {r: r2, c: c2}; domBoard[r2][c2].classList.add('selected');
+            return;
+        }
+
+        let path = findPath(r1, c1, r2, c2);
+
+        if (path) {
+            drawLine(path);
+            board[r1][c1] = 0; board[r2][c2] = 0; 
+            domBoard[r1][c1].classList.remove('selected');
+            
+            setTimeout(() => {
+                domBoard[r1][c1].innerText = ''; domBoard[r1][c1].classList.add('empty');
+                domBoard[r2][c2].innerText = ''; domBoard[r2][c2].classList.add('empty');
+            }, 300);
+            
+            selected = null;
+            pairsLeft--;
+
+            // THƯỞNG THỜI GIAN
+            timeLeft = Math.min(totalTime, timeLeft + 2); 
+            updateTimerDisplay();
+
+            if (pairsLeft === 0) {
+                clearInterval(timerInterval); // Dừng thời gian khi qua vòng
+                setTimeout(() => {
+                    alert(`🎉 Đỉnh quá! N.Quỳnh chuẩn bị qua Vòng ${currentLevelIndex + 2} nhé!`);
+                    currentLevelIndex++;
+                    startLevel(); // Chơi vòng tiếp theo
+                }, 500);
+            } else {
+                setTimeout(ensurePlayable, 400); 
+            }
+        } else {
+            domBoard[r1][c1].classList.remove('selected');
+            selected = {r: r2, c: c2}; domBoard[r2][c2].classList.add('selected');
+        }
+    }
+
+    // --- ALGORITHM TÌM ĐƯỜNG PIKACHU ---
+    function findPath(r1, c1, r2, c2) {
+        function isClear(rA, cA, rB, cB) {
+            if (rA === rB) {
+                let minC = Math.min(cA, cB), maxC = Math.max(cA, cB);
+                for (let c = minC + 1; c < maxC; c++) if (board[rA][c] !== 0) return false;
+                return true;
+            }
+            if (cA === cB) {
+                let minR = Math.min(rA, rB), maxR = Math.max(rA, rB);
+                for (let r = minR + 1; r < maxR; r++) if (board[r][cA] !== 0) return false;
+                return true;
+            }
+            return false;
+        }
+
+        if (isClear(r1, c1, r2, c2) && (r1 === r2 || c1 === c2)) return [{r: r1, c: c1}, {r: r2, c: c2}];
+
+        if (board[r1][c2] === 0 && isClear(r1, c1, r1, c2) && isClear(r1, c2, r2, c2)) 
+            return [{r: r1, c: c1}, {r: r1, c: c2}, {r: r2, c: c2}];
+        if (board[r2][c1] === 0 && isClear(r1, c1, r2, c1) && isClear(r2, c1, r2, c2)) 
+            return [{r: r1, c: c1}, {r: r2, c: c1}, {r: r2, c: c2}];
+
+        let dirs = [[-1,0], [1,0], [0,-1], [0,1]];
+        for (let d of dirs) {
+            let currR = r1 + d[0], currC = c1 + d[1];
+            while (currR >= 0 && currR <= ROWS + 1 && currC >= 0 && currC <= COLS + 1 && board[currR][currC] === 0) {
+                if (board[currR][c2] === 0 && isClear(currR, currC, currR, c2) && isClear(currR, c2, r2, c2)) 
+                    return [{r: r1, c: c1}, {r: currR, c: currC}, {r: currR, c: c2}, {r: r2, c: c2}];
+                if (board[r2][currC] === 0 && isClear(currR, currC, r2, currC) && isClear(r2, currC, r2, c2)) 
+                    return [{r: r1, c: c1}, {r: currR, c: currC}, {r: r2, c: currC}, {r: r2, c: c2}];
+                currR += d[0]; currC += d[1];
+            }
+        }
+        return null;
+    }
+
+    // --- ALGORITHM KIỂM TRA ĐƯỜNG VÀ ĐẢO BÀI ---
+    function ensurePlayable() {
+        if (pairsLeft === 0) return;
+        
+        let hasMove = false;
+        let iconsMap = {};
+        
+        for (let r = 1; r <= ROWS; r++) {
+            for (let c = 1; c <= COLS; c++) {
+                if (board[r][c] !== 0) {
+                    let icon = board[r][c];
+                    if (!iconsMap[icon]) iconsMap[icon] = [];
+                    iconsMap[icon].push({r, c});
+                }
+            }
+        }
+
+        checkLoop:
+        for (let icon in iconsMap) {
+            let arr = iconsMap[icon];
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (findPath(arr[i].r, arr[i].c, arr[j].r, arr[j].c)) {
+                        hasMove = true;
+                        break checkLoop; 
+                    }
+                }
+            }
+        }
+
+        if (!hasMove) {
+            showToast("✨ Hết đường! Vũ trụ đang đảo bài giúp bạn... ✨");
+            shuffleBoard();
+            setTimeout(ensurePlayable, 100); 
+        }
+    }
+
+    function shuffleBoard() {
+        selected = null;
+        let activeIcons = [];
+        for (let r = 1; r <= ROWS; r++) {
+            for (let c = 1; c <= COLS; c++) {
+                if (board[r][c] !== 0) {
+                    activeIcons.push(board[r][c]);
+                    domBoard[r][c].classList.remove('selected');
+                }
+            }
+        }
+        
+        activeIcons.sort(() => Math.random() - 0.5);
+        
+        for (let r = 1; r <= ROWS; r++) {
+            for (let c = 1; c <= COLS; c++) {
+                if (board[r][c] !== 0) {
+                    let newIcon = activeIcons.pop();
+                    board[r][c] = newIcon;
+                    domBoard[r][c].innerText = newIcon;
+                }
+            }
+        }
+    }
+
+    // --- VẼ TIA SÉT ---
+    function drawLine(path) {
+        let canvas = document.getElementById('lineCanvas');
+        let ctx = canvas.getContext('2d');
+        let wrapper = document.querySelector('.game-wrapper');
+        
+        canvas.width = wrapper.offsetWidth; canvas.height = wrapper.offsetHeight;
+        let wrapRect = wrapper.getBoundingClientRect();
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.strokeStyle = '#00ff00'; ctx.lineWidth = 6;
+        ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+        ctx.shadowBlur = 10; ctx.shadowColor = '#00ff00';
+
+        for (let i = 0; i < path.length; i++) {
+            let cell = domBoard[path[i].r][path[i].c];
+            let cellRect = cell.getBoundingClientRect();
+            let x = cellRect.left - wrapRect.left + cellRect.width / 2;
+            let y = cellRect.top - wrapRect.top + cellRect.height / 2;
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        setTimeout(() => ctx.clearRect(0, 0, canvas.width, canvas.height), 300);
+    }
+</script>
 </body>
 </html>
